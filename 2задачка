@@ -1,0 +1,4 @@
+
+squares = [i * i for i in range(13)]
+
+print(squares)
