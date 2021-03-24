@@ -1,0 +1,5 @@
+from random import randint
+
+squares = [randint(15, 19) for i in range(13)]
+
+print(squares)
