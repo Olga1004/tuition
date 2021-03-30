@@ -10,6 +10,15 @@ def my_function():
 
 my_function()
 
+# 1 лаб. 2 задача 9 вариант
+num = input("Введите числа: ")
+num = num.split(',')
+positive_number = 0
+for number in num:
+    if int(number) > 0 and int(number) > positive_number:
+        positive_number = int(number)
+print(positive_number)
+
 
 # 2 лаб. 1 задача
 string = "abrakadabra"
