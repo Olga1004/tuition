@@ -14,31 +14,31 @@ class Point3D:
         self.CoordY = y
         self.CoordZ = z
 
-    def add_x(self, value):
+    def __add__(self, value):
         self.CoordX += value
 
-    def add_y(self, value):
+    def __add__(self, value):
         self.CoordY += value
 
-    def add_z(self, value):
+    def __add__(self, value):
         self.CoordZ += value
 
-    def subtract_x(self, value):
+    def __sub__(self, value):
         self.CoordX -= value
 
-    def subtract_y(self, value):
+    def __sub__(self, value):
         self.CoordY -= value
 
-    def subtract_z(self, value):
+    def __sub__(self, value):
         self.CoordZ -= value
 
-    def multipl_x(self, value):
+    def __mul__(self, value):
         self.CoordX *= value
 
-    def multipl_y(self, value):
+    def __mul__(self, value):
         self.CoordY *= value
 
-    def multipl_z(self, value):
+    def __mul__(self, value):
         self.CoordZ *= value
 
     def get_x(self):
