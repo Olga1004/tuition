@@ -1,7 +1,6 @@
 # 1
 class Point3D:
-    x = [1]
-    y = [2]
+    x, y = [1, 2]
 
     def __init__(self, x = 0, y = 0):
         self.x = x
@@ -13,10 +12,16 @@ class Point3D:
     def convert(self):
         return self.x, self.y
 
+    def setCoords(self, x, y):
+        self.x = x
+        self.y = y
+
 
 pt1 = Point3D(2, 3)
 print(pt1.__dict__)
 print(pt1.convert())
+pt1.setCoords(5, 16)
+print(pt1.__dict__)
 
 
 # 2
