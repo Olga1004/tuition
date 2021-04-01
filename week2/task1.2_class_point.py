@@ -1,25 +1,19 @@
-# 1
+#1
 class Point3D:
-    x, y = [1, 2]
 
-    def __init__(self, x = 0, y = 0):
-        self.x = x
-        self.y = y
+    def __init__(self, x, y):
+        self.xy = [x, y]
 
     def get(self):
-        return self.x, self.y
-
-    def convert(self):
-        return self.x, self.y
+        return tuple(self.xy)
 
     def setCoords(self, x, y):
-        self.x = x
-        self.y = y
+        self.xy = [x, y]
 
-
+#
 pt1 = Point3D(2, 3)
 print(pt1.__dict__)
-print(pt1.convert())
+print (pt1.get())
 pt1.setCoords(5, 16)
 print(pt1.__dict__)
 
