@@ -12,35 +12,57 @@ def my_function():
 my_function()
 
 # 1 лаб. 8 вар. 2 задача
-
 num = input("Введите числа: ")
 num = num.split(',')
-print(min(num))
+positive_number = -1
+index = 0
+while positive_number < 0:
+    if int(num[index]) > 0:
+        positive_number = int(num[index])
+    index += 1
+
+if positive_number == -1:
+    print('Нет положительных чисел в массиве')
+else:
+    for number in num:
+        if int(number) > 0 and int(number) < positive_number:
+                positive_number = int(number)
+    print(positive_number)
+# -2, 88, 4, 67, 90, 55, -7, 12, 6, 79
+
 
 # 2 лаб. 8 вариант 1 задача
 
-import re
-print([i.start () for i in re.finditer('(?=ra)', 'abrakadabra')])
+stroka = 'abrakadabra'
+print([i for i in range(len(stroka)) if stroka.startswith('ra', i)])
 
 # 2 лаб. 8 вариант 2 задача
+def sum(x):
+    return x + 7.2
+
 
 my_list = [-1, 0, 5, 3, 2]
-for x in range(5):
-    my_list[x] += 7.2
+print(list(map(sum, my_list)))
 
-print(my_list)
+
 
 # 3 лаб. 8 вариант 1 задача
-from scipy.spatial import distance
-x = (10, 15) # подставлять значения для проверки
-y = (13, 18)
-dst = distance.euclidean(x, y)
-print(dst)
+def euclidean_distance(x1, y1, x2, y2):
+    return ((x1 - x2)**2 + (y1 - y2)**2)**0.5
+
+
+print(euclidean_distance(15, 10, 40, 20))
+
+
 
 #  4 лаб. 8 вариант
 
 class Rub:
     def __init__(self, rubl, cop):
+        if type(rubl) != int:
+            raise TypeError('Rubl должен быть целым числом')
+        if cop not in range(0,61):
+            raise ValueError('Cop должен быть числом от 0 до 60')
         self.rubl = rubl
         self.cop = cop
 
@@ -59,7 +81,7 @@ class Rub:
         return str(sum.rubl) + " руб." + str(sum.cop) + " коп."
 
 
-inv1 = Rub(220, 8)
+inv1 = Rub(220, 6)
 inv2 = Rub(180, 2)
 inv3 = inv1 + inv2
 print(inv3)
