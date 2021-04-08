@@ -1,12 +1,12 @@
 # 1 лаб.работа. 8 вариант. 1 задача
 
 def my_function():
-    for i in range(-2, 5):
-        x = i/1
-        for j in range(-3, 4):
-            t = j/1
-        if abs(x - t) != 0:
-            print(1 / abs(x-t))
+    for x in range(-2, 5, 1):
+        # print(x, 'coord x')
+        for t in range(-3, 4, 1):
+            # print(t, 'coord t')
+            if abs(x - t) != 0:
+                print(1 / abs(x - t), 'result')
 
 
 my_function()
@@ -14,21 +14,18 @@ my_function()
 # 1 лаб. 8 вар. 2 задача
 num = input("Введите числа: ")
 num = num.split(',')
-positive_number = -1
-index = 0
-while positive_number < 0:
-    if int(num[index]) > 0:
-        positive_number = int(num[index])
-    index += 1
+min_number = [int(numbers) for numbers in num if int(numbers) > 0]
 
-if positive_number == -1:
-    print('Нет положительных чисел в массиве')
-else:
-    for number in num:
-        if int(number) > 0 and int(number) < positive_number:
-                positive_number = int(number)
-    print(positive_number)
-# -2, 88, 4, 67, 90, 55, -7, 12, 6, 79
+def is_number(num):
+    try:
+        int(num)
+        return True
+    except ValueError:
+        return False
+
+
+print(min(min_number))
+
 
 
 # 2 лаб. 8 вариант 1 задача
@@ -40,11 +37,15 @@ print([i for i in range(len(stroka)) if stroka.startswith('ra', i)])
 def sum(x):
     return x + 7.2
 
-
 my_list = [-1, 0, 5, 3, 2]
 print(list(map(sum, my_list)))
 
-
+# lambda
+my_list = [-1, 0, 5, 3, 2]
+print(list(map(lambda x: x + 7.2, my_list)))
+# list comprehesions
+my_list = [x + 7.2 for x in (-1, 0, 5, 3, 2)]
+print(my_list)
 
 # 3 лаб. 8 вариант 1 задача
 def euclidean_distance(x1, y1, x2, y2):
