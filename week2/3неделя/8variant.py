@@ -12,18 +12,23 @@ def my_function():
 my_function()
 
 # 1 лаб. 8 вар. 2 задача
+
 num = input("Введите числа: ")
 num = num.split(',')
-min_number = [int(numbers) for numbers in num if int(numbers) > 0]
 
-def is_number(num):
+
+def isfloat(value):
     try:
-        int(num)
+        float(value)
         return True
     except ValueError:
         return False
 
 
+num1 = list(filter(lambda x: x.isdigit() or isfloat(x), num))
+print(num1)
+
+min_number = [float(numbers) for numbers in num1 if float(numbers) > 0]
 print(min(min_number))
 
 
@@ -59,13 +64,12 @@ print(euclidean_distance(15, 10, 40, 20))
 #  4 лаб. 8 вариант
 
 class Rub:
+    rubl = 0
+    cop = 0
     def __init__(self, rubl, cop):
-        if type(rubl) != int:
-            raise TypeError('Rubl должен быть целым числом')
-        if cop not in range(0,61):
-            raise ValueError('Cop должен быть числом от 0 до 60')
-        self.rubl = rubl
-        self.cop = cop
+        self.rubl = (rubl * 100 + cop) // 100
+        self.cop = (rubl * 100 + cop) % 100
+
 
     def __add__(self, value):
         return Rub(self.rubl + value.rubl, self.cop + value.cop)
@@ -76,14 +80,24 @@ class Rub:
     def __mul__(self, value):
         return Rub(self.rubl * value.rubl, self.cop * value.cop)
 
+    #
+    def __setattr__(self, key, value):
+        print(key, 'key')
+        print(value, 'value')
+        if key =='rubl':
+            self.__dict__[key] = value // 100
+            self.__dict__['cop'] = self.__dict__.get('cop', 0) + (value % 1)*100
+        else:
+            self.__dict__['rubl'] = self.__dict__.get('rubl', 0) + value // 100
+            self.__dict__[key] = value % 100
 
-    def __gettatr__(self, value):
-        sum = self + value
-        return str(sum.rubl) + " руб." + str(sum.cop) + " коп."
+    def __convert__(rubl, cop):
+        print((rubl * 100 + cop) // 100, "рублей", (rubl * 100 + cop) % 100, "копеек")
 
 
-inv1 = Rub(220, 6)
-inv2 = Rub(180, 2)
+
+inv1 = Rub(220, 55)
+inv2 = Rub(180, 65)
 inv3 = inv1 + inv2
 print(inv3)
 inv4 = inv1 - inv2
@@ -93,5 +107,12 @@ print(inv5)
 print("Результат сложения: " + str(inv3.rubl) + "," + str(inv3.cop))
 print("Результат вычитания: " + str(inv4.rubl) + "," + str(inv4.cop))
 print("Результат умножения: " + str(inv5.rubl) + "," + str(inv5.cop))
-inv6 = Rub.__gettatr__(inv1, inv2)
-print(inv6)
+
+inv7 = Rub.__convert__(500, 115)
+print(inv7)
+a = Rub(1, 2)
+print(a.rubl, a.cop)
+a.rubl = 12.43
+print(a.rubl, a.cop)
+a.cop = 134
+print(a.rubl, a.cop)
