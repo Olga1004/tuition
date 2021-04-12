@@ -85,7 +85,7 @@ class Rub:
         print(key, 'key')
         print(value, 'value')
         if key =='rubl':
-            self.__dict__[key] = value // 100
+            self.__dict__[key] = value / 1
             self.__dict__['cop'] = self.__dict__.get('cop', 0) + (value % 1)*100
         else:
             self.__dict__['rubl'] = self.__dict__.get('rubl', 0) + value // 100
