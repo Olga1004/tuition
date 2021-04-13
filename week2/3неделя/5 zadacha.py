@@ -4,13 +4,14 @@ import datetime
 from random import randint, choice
 
 themes = ['python', 'js', 'html', 'css', 'SQl', 'Oracle database']
-date = {}
-hours = datetime.datetime.now().hour
-minute = datetime.datetime.now().minute
-time = str(hours) + ':' + str(minute)
-tuple1 = tuple([randint(0, 20), choice(themes)])
-tuple2 = tuple([randint(0, 20), choice(themes)])
-date['data'] = time
-date['themes'] = [tuple1, tuple2]
-spisok = [date]
-print(spisok)
+result = []
+for i in range(randint(1, 10)):
+    date = {}
+    time = datetime.datetime.today().strftime('%d/%m/%Y')
+    names = dict(id=randint(0, 20),
+                 names=[choice(themes) for i in range(randint(1, 3))])
+    date['data'] = time
+    date['themes'] = [names]
+    result.append(date)
+
+print(result)
